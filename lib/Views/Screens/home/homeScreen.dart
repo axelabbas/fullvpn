@@ -12,7 +12,6 @@ import 'package:fullvpn/Views/Screens/home/locationsScreen.dart';
 import 'package:fullvpn/Views/Widgets/home/powerWidget.dart';
 import 'package:fullvpn/Views/Widgets/home/speedWidget.dart';
 import 'package:provider/provider.dart';
-import 'package:timercounter/timercounter.dart';
 
 class homeScreen extends StatefulWidget {
   const homeScreen({super.key});
@@ -27,7 +26,7 @@ class _homeScreenState extends State<homeScreen>
         SingleTickerProviderStateMixin {
   @override
   bool get wantKeepAlive => true;
-  late CustomTimerController _controller = CustomTimerController(
+  late final CustomTimerController _controller = CustomTimerController(
       vsync: this,
       begin: Duration(days: 0, hours: 0, minutes: 0, seconds: 0),
       end: Duration(hours: 24),
@@ -73,7 +72,7 @@ class _homeScreenState extends State<homeScreen>
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Image(
-                              image: new AssetImage("assets/images/Logo.png"),
+                              image: AssetImage("assets/images/Logo.png"),
                               color: null,
                               width: screenWidth * 0.1,
                               height: screenWidth * 0.1,
@@ -81,7 +80,7 @@ class _homeScreenState extends State<homeScreen>
                               alignment: Alignment.center,
                             ),
                             Image(
-                              image: new AssetImage("assets/images/crown.png"),
+                              image: AssetImage("assets/images/crown.png"),
                               color: null,
                               width: screenWidth * 0.1,
                               height: screenWidth * 0.1,
@@ -94,7 +93,7 @@ class _homeScreenState extends State<homeScreen>
                           height: screenHeight * 0.05,
                         ),
                         Image(
-                          image: new AssetImage(isOn
+                          image: AssetImage(isOn
                               ? "assets/images/runningSheild.png"
                               : "assets/images/failedSheild.png"),
                           color: null,
@@ -166,6 +165,7 @@ class _homeScreenState extends State<homeScreen>
                                       TextSpan(
                                           text: " : 62.241.27.39",
                                           style: TextStyle(
+                                            fontWeight: FontWeight.bold,
                                             color:
                                                 Colors.white.withOpacity(0.6),
                                           )),
@@ -227,7 +227,7 @@ class _homeScreenState extends State<homeScreen>
                                   child: Center(
                                     child: ListTile(
                                       leading: Image(
-                                        image: new AssetImage(location.flag),
+                                        image: AssetImage(location.flag),
                                         color: null,
                                         width: screenWidth * 0.08,
                                         height: screenWidth * 0.08,

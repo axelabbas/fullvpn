@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class speedWidget extends StatefulWidget {
-  speedWidget({required this.speed, required this.icon, required this.color});
+  const speedWidget({super.key, required this.speed, required this.icon, required this.color});
   final IconData icon;
   final String speed;
   final Color color;
@@ -20,15 +20,15 @@ class _speedWidgetState extends State<speedWidget> {
           color: widget.color,
           size: 35,
         ),
-        SizedBox(
+        const SizedBox(
           width: 10,
         ),
         Text(widget.speed,
-            style: TextStyle(
+            style: const TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
                 fontSize: 22)),
-        SizedBox(
+        const SizedBox(
           width: 10,
         ),
         Text("MB",

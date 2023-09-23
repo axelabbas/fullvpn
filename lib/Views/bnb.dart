@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fullvpn/Controllers/locationsProvider.dart';
-import 'package:fullvpn/Controllers/powerButtonProvider.dart';
 import 'package:fullvpn/Models/colorsModel.dart';
 import 'package:fullvpn/Views/Screens/home/homeScreen.dart';
-import 'package:provider/provider.dart';
 
 class bottomNav extends StatefulWidget {
   const bottomNav({super.key});
@@ -14,13 +11,13 @@ class bottomNav extends StatefulWidget {
 
 class _bottomNavState extends State<bottomNav> {
   int _pageIndex = 0;
-  List<Widget> _pages = [
-     homeScreen(), 
-    homeScreen(),
-    homeScreen(),
-    homeScreen(),
+  final List<Widget> _pages = [
+     const homeScreen(), 
+    const homeScreen(),
+    const homeScreen(),
+    const homeScreen(),
   ];
-  PageController _pageController = PageController(initialPage: 0);
+  final PageController _pageController = PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +25,7 @@ class _bottomNavState extends State<bottomNav> {
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           border: Border.all(color: myColors.secondaryColor, width: 0.2),
-          boxShadow: <BoxShadow>[
+          boxShadow: const <BoxShadow>[
             BoxShadow(
               color: Colors.black,
               blurRadius: 10,
@@ -51,7 +48,7 @@ class _bottomNavState extends State<bottomNav> {
                   _pageIndex = value;
                   _pageController.jumpToPage(_pageIndex);
                 }),
-            items: [
+            items: const [
               BottomNavigationBarItem(
                   icon: ImageIcon(
                     AssetImage("assets/images/Shield.png"),
@@ -72,7 +69,7 @@ class _bottomNavState extends State<bottomNav> {
       body: Center(
         child: PageView(
           controller: _pageController,
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           children: _pages,
         ),
       ),

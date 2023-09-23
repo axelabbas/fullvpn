@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:custom_timer/custom_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:fullvpn/Models/colorsModel.dart';
-import 'package:timercounter/timercounter.dart';
 
 class powerbuttonProvider with ChangeNotifier {
   Color bgColor = myColors.primaryColor;
@@ -32,7 +31,7 @@ class powerbuttonProvider with ChangeNotifier {
     isGlowing = true;
 
     while (isLoading) {
-      await Future.delayed(Duration(milliseconds: 1));
+      await Future.delayed(const Duration(milliseconds: 1));
 
       progress += 0.001;
       if (progress >= 1) {

@@ -21,34 +21,34 @@ class _locationsScreenState extends State<locationsScreen> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-          title: Text("Server Locations"),
+          title: const Text("Server Locations"),
           backgroundColor: Colors.transparent,
           elevation: 0,
-          titleTextStyle: TextStyle(
+          titleTextStyle: const TextStyle(
               fontWeight: FontWeight.bold, fontFamily: "outfit", fontSize: 22),
           centerTitle: true,
           leading: IconButton(
-            icon: Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.pop(context);
             },
           )),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             // Note: Same code is applied for the TextFormField as well
             Container(
               child: TextFormField(
                   decoration: InputDecoration(
-                contentPadding: EdgeInsets.symmetric(
+                contentPadding: const EdgeInsets.symmetric(
                   vertical: 30,
                 ),
-                prefixIcon: Image(
-                  image: new AssetImage("assets/images/fi_search.png"),
+                prefixIcon: const Image(
+                  image: AssetImage("assets/images/fi_search.png"),
                   color: null,
                   height: 30,
                   width: 30,
@@ -69,10 +69,10 @@ class _locationsScreenState extends State<locationsScreen> {
                     fontWeight: FontWeight.w500),
               )),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
-            Align(
+            const Align(
               alignment: Alignment.centerLeft,
               child: Text(
                 "Favorite Servers",
@@ -83,7 +83,7 @@ class _locationsScreenState extends State<locationsScreen> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             SizedBox(
@@ -92,13 +92,13 @@ class _locationsScreenState extends State<locationsScreen> {
                   shrinkWrap: true,
                   itemCount: favLocations.length,
                   itemBuilder: (context, index) {
-                    return locationWidget(location: favLocations[index]);
+                    return LocationWidget(location: favLocations[index]);
                   }),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Align(
+            const Align(
               alignment: Alignment.centerLeft,
               child: Text(
                 "All Servers",
@@ -108,7 +108,7 @@ class _locationsScreenState extends State<locationsScreen> {
                     fontSize: 20),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Expanded(
@@ -117,7 +117,7 @@ class _locationsScreenState extends State<locationsScreen> {
                   itemCount: locations.length,
                   itemBuilder: (context, index) {
                     if (favLocations.contains(locations[index]) == false) {
-                      return locationWidget(location: locations[index]);
+                      return LocationWidget(location: locations[index]);
                     } else {
                       return Container();
                     }

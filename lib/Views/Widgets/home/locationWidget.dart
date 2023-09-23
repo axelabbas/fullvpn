@@ -4,14 +4,14 @@ import 'package:fullvpn/Models/colorsModel.dart';
 import 'package:fullvpn/Models/locationModel.dart';
 import 'package:provider/provider.dart';
 
-class locationWidget extends StatefulWidget {
-  late Location location;
-  locationWidget({required this.location, Key? key});
+class LocationWidget extends StatefulWidget {
+  final Location location;
+  LocationWidget({super.key, required this.location});
   @override
-  State<locationWidget> createState() => _locationWidgetState();
+  State<LocationWidget> createState() => _LocationWidgetState();
 }
 
-class _locationWidgetState extends State<locationWidget> {
+class _LocationWidgetState extends State<LocationWidget> {
   @override
   Widget build(BuildContext context) {
     Location currentSelectedLocation =
@@ -32,7 +32,7 @@ class _locationWidgetState extends State<locationWidget> {
           child: Center(
             child: ListTile(
               leading: Image(
-                image: new AssetImage(widget.location.flag),
+                image: AssetImage(widget.location.flag),
                 color: null,
                 width: 40,
                 height: 40,
@@ -41,7 +41,7 @@ class _locationWidgetState extends State<locationWidget> {
               ),
               title: Text(
                 widget.location.country,
-                style: TextStyle(
+                style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                     fontSize: 20),
@@ -56,8 +56,8 @@ class _locationWidgetState extends State<locationWidget> {
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Image(
-                    image: new AssetImage("assets/images/network.png"),
+                  const Image(
+                    image: AssetImage("assets/images/network.png"),
                     color: null,
                     fit: BoxFit.scaleDown,
                     alignment: Alignment.center,
@@ -71,15 +71,14 @@ class _locationWidgetState extends State<locationWidget> {
                     icon: context
                             .read<locationsProvider>()
                             .isFaviorte(widget.location)
-                        ? Image(
-                            image: new AssetImage("assets/images/star.png"),
+                        ? const Image(
+                            image: AssetImage("assets/images/star.png"),
                             color: null,
                             fit: BoxFit.scaleDown,
                             alignment: Alignment.center,
                           )
-                        : Image(
-                            image: new AssetImage(
-                                "assets/images/starDisabled.png"),
+                        : const Image(
+                            image: AssetImage("assets/images/starDisabled.png"),
                             color: null,
                             fit: BoxFit.scaleDown,
                             alignment: Alignment.center,
