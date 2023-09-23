@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fullvpn/Models/colorsModel.dart';
 import 'package:fullvpn/Views/Screens/home/homeScreen.dart';
+import 'package:fullvpn/Views/Screens/settings/settingsScreen.dart';
 
 class bottomNav extends StatefulWidget {
   const bottomNav({super.key});
@@ -12,8 +13,8 @@ class bottomNav extends StatefulWidget {
 class _bottomNavState extends State<bottomNav> {
   int _pageIndex = 0;
   final List<Widget> _pages = [
-     const homeScreen(), 
     const homeScreen(),
+    const settingsScreen(),
     const homeScreen(),
     const homeScreen(),
   ];
