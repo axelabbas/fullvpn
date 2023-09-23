@@ -14,8 +14,11 @@ class bottomNav extends StatefulWidget {
 class _bottomNavState extends State<bottomNav> {
   int _pageIndex = 0;
   List<Widget> _pages = [
-    ChangeNotifierProvider<powerbuttonProvider>(
-        create: (context) => powerbuttonProvider(), child: homeScreen()),
+    MultiProvider(child: homeScreen(), providers: [
+      ChangeNotifierProvider<powerbuttonProvider>(
+          create: (context) => powerbuttonProvider()),
+      
+    ]),
     homeScreen(),
     homeScreen(),
     homeScreen(),
@@ -36,6 +39,7 @@ class _bottomNavState extends State<bottomNav> {
           ],
         ),
         child: BottomNavigationBar(
+            iconSize: 30,
             type: BottomNavigationBarType.fixed,
             selectedItemColor: myColors.primaryColor,
             backgroundColor: Colors.black,
@@ -56,11 +60,6 @@ class _bottomNavState extends State<bottomNav> {
                     AssetImage("assets/images/Shield.png"),
                   ),
                   label: "VPN"),
-              BottomNavigationBarItem(
-                  icon: ImageIcon(
-                    AssetImage("assets/images/Location.png"),
-                  ),
-                  label: "Location"),
               BottomNavigationBarItem(
                   icon: ImageIcon(
                     AssetImage("assets/images/Setting.png"),

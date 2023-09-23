@@ -1,5 +1,9 @@
+import 'dart:async';
+
+import 'package:custom_timer/custom_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:fullvpn/Models/colorsModel.dart';
+import 'package:timercounter/timercounter.dart';
 
 class powerbuttonProvider with ChangeNotifier {
   Color bgColor = myColors.primaryColor;
@@ -8,6 +12,21 @@ class powerbuttonProvider with ChangeNotifier {
   double progress = 0.0;
   Color progressColor = myColors.primaryColor;
   bool isGlowing = false;
+
+  int counter = 0;
+  late CustomTimerController _timeController;
+
+  counterReset() {
+    _timeController.reset();
+  }
+
+  setTimeController(timeController) {
+    _timeController = timeController;
+  }
+
+  counterStart() {
+    _timeController.start();
+  }
 
   update() async {
     isGlowing = true;
@@ -29,6 +48,7 @@ class powerbuttonProvider with ChangeNotifier {
   turnOn() {
     isLoading = false;
     isOn = true;
+    counterStart();
     bgColor = myColors.greenAccent;
     progressColor = myColors.greenAccent;
     notifyListeners();
@@ -45,6 +65,7 @@ class powerbuttonProvider with ChangeNotifier {
   }
 
   turnOff() {
+    counterReset();
     isOn = false;
     bgColor = myColors.primaryColor;
     progress = 0.0;

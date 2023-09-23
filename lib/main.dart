@@ -3,7 +3,7 @@ import 'package:fullvpn/Views/bnb.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: bottomNav(),
+    home: const bottomNav(),
     theme: ThemeData(fontFamily: 'outfit'),
     debugShowCheckedModeBanner: false,
   ));
