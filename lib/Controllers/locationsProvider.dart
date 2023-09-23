@@ -73,6 +73,7 @@ class locationsProvider extends ChangeNotifier {
   ];
   setCurrentLocation(Location location) {
     selectedLocation = location;
+    print(selectedLocation.city);
     notifyListeners();
   }
 

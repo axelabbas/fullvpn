@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:fullvpn/Controllers/locationsProvider.dart';
 import 'package:fullvpn/Controllers/powerButtonProvider.dart';
 import 'package:fullvpn/Models/colorsModel.dart';
+import 'package:fullvpn/Models/locationModel.dart';
 import 'package:fullvpn/Views/Screens/home/locationsScreen.dart';
 import 'package:fullvpn/Views/Widgets/home/powerWidget.dart';
 import 'package:fullvpn/Views/Widgets/home/speedWidget.dart';
@@ -34,6 +35,7 @@ class _homeScreenState extends State<homeScreen>
       interval: CustomTimerInterval.seconds);
   @override
   Widget build(BuildContext context) {
+    Location location = context.watch<locationsProvider>().selectedLocation;
     bool isOn = context.watch<powerbuttonProvider>().isOn;
     bool isLoading = context.watch<powerbuttonProvider>().isLoading;
     double screenHeight = MediaQuery.of(context).size.height;
@@ -208,14 +210,12 @@ class _homeScreenState extends State<homeScreen>
                             child: InkWell(
                               borderRadius: BorderRadius.circular(14),
                               onTap: () {
+                                print(location.city);
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            ChangeNotifierProvider(
-                                                create: (context) =>
-                                                    locationsProvider(),
-                                                child: locationsScreen())));
+                                            locationsScreen()));
                               },
                               child: Container(
                                   height: screenHeight * .09,
@@ -227,8 +227,7 @@ class _homeScreenState extends State<homeScreen>
                                   child: Center(
                                     child: ListTile(
                                       leading: Image(
-                                        image: new AssetImage(
-                                            "assets/images/usa.png"),
+                                        image: new AssetImage(location.flag),
                                         color: null,
                                         width: screenWidth * 0.08,
                                         height: screenWidth * 0.08,
@@ -236,14 +235,14 @@ class _homeScreenState extends State<homeScreen>
                                         alignment: Alignment.center,
                                       ),
                                       title: Text(
-                                        "United States",
+                                        location.country,
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontWeight: FontWeight.bold,
                                             fontSize: 20),
                                       ),
                                       subtitle: Text(
-                                        "New York",
+                                        location.city,
                                         style: TextStyle(
                                             color:
                                                 Colors.white.withOpacity(0.6),
@@ -270,7 +269,7 @@ class _homeScreenState extends State<homeScreen>
                               color: Colors.white.withOpacity(0.6),
                               fontWeight: FontWeight.bold,
                               fontSize: 12),
-                        )
+                        ),
                       ],
                     ),
                   ),

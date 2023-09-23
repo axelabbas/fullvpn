@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fullvpn/Controllers/locationsProvider.dart';
 import 'package:fullvpn/Controllers/powerButtonProvider.dart';
 import 'package:fullvpn/Models/colorsModel.dart';
 import 'package:fullvpn/Views/Screens/home/homeScreen.dart';
@@ -14,11 +15,7 @@ class bottomNav extends StatefulWidget {
 class _bottomNavState extends State<bottomNav> {
   int _pageIndex = 0;
   List<Widget> _pages = [
-    MultiProvider(child: homeScreen(), providers: [
-      ChangeNotifierProvider<powerbuttonProvider>(
-          create: (context) => powerbuttonProvider()),
-      
-    ]),
+     homeScreen(), 
     homeScreen(),
     homeScreen(),
     homeScreen(),
