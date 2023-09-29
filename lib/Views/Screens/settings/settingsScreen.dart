@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fullvpn/Controllers/settingsProvider.dart';
 import 'package:fullvpn/Models/colorsModel.dart';
 import 'package:fullvpn/Views/Widgets/settings/settingsTile.dart';
+import 'package:provider/provider.dart';
 
 class settingsScreen extends StatefulWidget {
   const settingsScreen({super.key});
@@ -11,11 +13,10 @@ class settingsScreen extends StatefulWidget {
 }
 
 class _settingsScreenState extends State<settingsScreen> {
-  bool killSwitch = false;
-  bool autoStart = false;
-
   @override
   Widget build(BuildContext context) {
+    bool killSwitch = context.watch<settingsProvider>().killSwitch;
+    bool autoStart = context.watch<settingsProvider>().autoStart;
     return Container(
       color: Colors.black,
       child: Column(
@@ -38,7 +39,7 @@ class _settingsScreenState extends State<settingsScreen> {
               ),
             ),
           ),
-          settingsTile(
+          SettingsTile(
             title: 'Protocol',
             subtitle: "Automatic",
             icon: Icons.shield,
@@ -48,7 +49,7 @@ class _settingsScreenState extends State<settingsScreen> {
               size: 16,
             ),
           ),
-          settingsTile(
+          SettingsTile(
             title: 'Auto Start',
             subtitle: "Automatically connect to VPN on app launch",
             icon: Icons.wifi,
@@ -56,14 +57,12 @@ class _settingsScreenState extends State<settingsScreen> {
               trackColor: myColors.secondaryColor.withOpacity(0.2),
               value: autoStart,
               onChanged: (value) {
-                setState(() {
-                  autoStart = value;
-                });
+                context.read<settingsProvider>().toggleAutoStart();
               },
               activeColor: myColors.primaryColor,
             ),
           ),
-          settingsTile(
+          SettingsTile(
             title: 'Kill Switch',
             subtitle: "Disable the internet if VPN disconnects",
             icon: Icons.wifi_lock,
@@ -71,14 +70,12 @@ class _settingsScreenState extends State<settingsScreen> {
               trackColor: myColors.secondaryColor.withOpacity(0.2),
               value: killSwitch,
               onChanged: (value) {
-                setState(() {
-                  killSwitch = value;
-                });
+                context.read<settingsProvider>().toggleKillswitch();
               },
               activeColor: myColors.primaryColor,
             ),
           ),
-          settingsTile(
+          SettingsTile(
               title: 'Reinstall VPN Profile',
               subtitle: "Try if you have connectivity issues",
               icon: Icons.restart_alt,
@@ -86,7 +83,7 @@ class _settingsScreenState extends State<settingsScreen> {
                 height: 10,
                 width: 10,
               )),
-          settingsTile(
+          SettingsTile(
             title: 'Split Tunneling',
             subtitle: "Disable VPN for selected apps",
             icon: Icons.call_split_outlined,
