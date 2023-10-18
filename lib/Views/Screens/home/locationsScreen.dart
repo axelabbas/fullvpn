@@ -33,9 +33,10 @@ class _locationsScreenState extends State<locationsScreen> {
               Navigator.pop(context);
             },
           )),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Column(
+      body: Container(
+        // padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: ListView(
+          shrinkWrap: true,
           children: [
             const SizedBox(
               height: 20,
@@ -89,6 +90,7 @@ class _locationsScreenState extends State<locationsScreen> {
             SizedBox(
               height: favLocations.length * 80,
               child: ListView.builder(
+                  physics: ClampingScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: favLocations.length,
                   itemBuilder: (context, index) {
@@ -111,18 +113,17 @@ class _locationsScreenState extends State<locationsScreen> {
             const SizedBox(
               height: 20,
             ),
-            Expanded(
-              child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: locations.length,
-                  itemBuilder: (context, index) {
-                    if (favLocations.contains(locations[index]) == false) {
-                      return LocationWidget(location: locations[index]);
-                    } else {
-                      return Container();
-                    }
-                  }),
-            ),
+            ListView.builder(
+                physics: ClampingScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: locations.length,
+                itemBuilder: (context, index) {
+                  if (favLocations.contains(locations[index]) == false) {
+                    return LocationWidget(location: locations[index]);
+                  } else {
+                    return Container();
+                  }
+                }),
           ],
         ),
       ),

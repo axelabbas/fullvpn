@@ -33,7 +33,7 @@ class powerbuttonProvider with ChangeNotifier {
     while (isLoading) {
       await Future.delayed(const Duration(milliseconds: 1));
 
-      progress += 0.001;
+      progress += 0.004;
       if (progress >= 1) {
         progress = 1;
 

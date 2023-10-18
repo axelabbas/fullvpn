@@ -31,8 +31,8 @@ class _powerWidgetState extends State<powerWidget> {
       child: Stack(children: [
         AnimatedContainer(
             duration: const Duration(milliseconds: 500),
-            width: 160,
-            height: 160,
+            width: 150,
+            height: 150,
             decoration: BoxDecoration(
               boxShadow: (isGlowing
                   ? (isOn
@@ -66,8 +66,8 @@ class _powerWidgetState extends State<powerWidget> {
               size: 40,
             )),
         SizedBox(
-            width: 160,
-            height: 160,
+            width: 150,
+            height: 150,
             child: CircularProgressIndicator(
               color: progressColor,
               value: progress,

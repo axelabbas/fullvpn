@@ -31,6 +31,7 @@ class _LocationWidgetState extends State<LocationWidget> {
           ),
           child: Center(
             child: ListTile(
+              minLeadingWidth: 0,
               leading: Image(
                 image: AssetImage(widget.location.flag),
                 color: null,
@@ -39,12 +40,16 @@ class _LocationWidgetState extends State<LocationWidget> {
                 fit: BoxFit.cover,
                 alignment: Alignment.center,
               ),
-              title: Text(
-                widget.location.country,
-                style: const TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20),
+              title: Row(
+                children: [
+                  Text(
+                    widget.location.country,
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20),
+                  ),
+                ],
               ),
               subtitle: Text(
                 widget.location.city,
@@ -56,12 +61,6 @@ class _LocationWidgetState extends State<LocationWidget> {
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Image(
-                    image: AssetImage("assets/images/network.png"),
-                    color: null,
-                    fit: BoxFit.scaleDown,
-                    alignment: Alignment.center,
-                  ),
                   IconButton(
                     onPressed: () {
                       context
@@ -72,7 +71,7 @@ class _LocationWidgetState extends State<LocationWidget> {
                             .read<locationsProvider>()
                             .isFaviorte(widget.location)
                         ? const Image(
-                            image: AssetImage("assets/images/star.png"),
+                            image: AssetImage("assets/images/Star.png"),
                             color: null,
                             fit: BoxFit.scaleDown,
                             alignment: Alignment.center,
