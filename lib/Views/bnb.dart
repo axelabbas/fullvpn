@@ -25,7 +25,8 @@ class _bottomNavState extends State<bottomNav> {
     return Scaffold(
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          border: Border.all(color: myColors.secondaryColor, width: 0.2),
+          border: Border(
+              top: BorderSide(color: myColors.secondaryColor, width: 0.2)),
           boxShadow: const <BoxShadow>[
             BoxShadow(
               color: Colors.black,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fullvpn/Controllers/profileProvider.dart';
 import 'package:fullvpn/Models/colorsModel.dart';
-import 'package:fullvpn/Views/Screens/profile/profileScreen.dart';
 import 'package:provider/provider.dart';
 
 class loginScreen extends StatefulWidget {
