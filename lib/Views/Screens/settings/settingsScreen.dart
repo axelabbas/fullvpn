@@ -18,7 +18,7 @@ class _settingsScreenState extends State<settingsScreen> {
     bool killSwitch = context.watch<settingsProvider>().killSwitch;
     bool autoStart = context.watch<settingsProvider>().autoStart;
     return Container(
-      color: Colors.black,
+      color: myColors.bgColor,
       child: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15.0),

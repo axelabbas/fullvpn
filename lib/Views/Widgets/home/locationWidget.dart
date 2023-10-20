@@ -61,6 +61,12 @@ class _LocationWidgetState extends State<LocationWidget> {
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  Image(
+                    image: AssetImage("assets/images/Network.png"),
+                    color: null,
+                    fit: BoxFit.scaleDown,
+                    alignment: Alignment.center,
+                  ),
                   IconButton(
                     onPressed: () {
                       context

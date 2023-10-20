@@ -53,7 +53,7 @@ class _homeScreenState extends State<homeScreen>
     return Container(
       height: screenHeight,
       decoration: BoxDecoration(
-          color: Colors.black,
+          color: myColors.bgColor,
           image: DecorationImage(
               image: AssetImage(
                 "assets/images/Map.png",

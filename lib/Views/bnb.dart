@@ -38,7 +38,7 @@ class _bottomNavState extends State<bottomNav> {
             iconSize: 30,
             type: BottomNavigationBarType.fixed,
             selectedItemColor: myColors.primaryColor,
-            backgroundColor: Colors.black,
+            backgroundColor: myColors.bgColor,
             selectedFontSize: 12,
             selectedLabelStyle: TextStyle(
                 fontWeight: FontWeight.bold, color: myColors.primaryColor),
